@@ -1,13 +1,17 @@
 class BooksController < ApplicationController
-  def new
+  def index
     @book = Book.new
     @book2 = Book.all
   end
 
   def create
-    book = Book.new(book_params)
-    book.save
-    redirect_to '/bookers-leve|1.herokuapp.com'
+    @book = Book.new(book_params)
+    if @book.save
+      redirect_to book_path(@book.id)
+    else
+      @book2 = Book.all
+      render :index
+    end
   end
 
   def show
@@ -27,7 +31,7 @@ class BooksController < ApplicationController
   def destroy
   book = Book.find(params[:id])
   book.destroy
-  redirect_to '/books/new'
+  redirect_to books_path
   end
 
   private
