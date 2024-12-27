@@ -7,13 +7,13 @@
   </tr>
   <% @book2.each do |f| %>
     <tr>
-      <th><%= f.title %></th>
-      <th><%= f.body %></th>
-      <th>
-        <%= link_to "Show", book_path(f.id) %>
-        <%= link_to "Edit", edit_book_path(f.id) %>
-        <%= link_to "destroy", book_path(f.id), method: :delete, "data-confirm" => "Are you sure" %>
-      <th>
+      <td><%= f.title %></td>
+      <td><%= f.body %></td>
+      <td>
+        <%= link_to "Show", book_path(f.id) %></td>
+        <td><%= link_to "Edit", edit_book_path(f.id) %></td>
+        <td><%= link_to "Destroy", book_path(f.id), method: :delete, "data-confirm" => "Are you sure" %></td>
+      
     </tr>
   <% end %>
 </table>
@@ -30,7 +30,7 @@
 <% end %>
 
 <%= form_with model: @book do |f| %>
-<h4>Ttile</h4>
+<h4>Title</h4>
 <%= f.text_field :title %>
 <h4>Body</h4>
 <%= f.text_field :body %>
